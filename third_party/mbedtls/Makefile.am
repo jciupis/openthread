@@ -43,7 +43,6 @@ libmbedcrypto_a_CPPFLAGS                      = \
 libmbedcrypto_a_SOURCES                       = \
     repo/library/aes.c                          \
     repo/library/asn1parse.c                    \
-    repo/library/asn1write.c                    \
     repo/library/base64.c                       \
     repo/library/bignum.c                       \
     repo/library/ccm.c                          \
@@ -76,6 +75,12 @@ libmbedcrypto_a_SOURCES                       = \
     repo/library/x509.c                         \
     repo/library/x509_crt.c                     \
     $(NULL)
+
+if !OPENTHREAD_EXAMPLES_NRF52840
+libmbedcrypto_a_SOURCES                      += \
+    repo/library/asn1write.c                    \
+    $(NULL)
+endif
 
 if !OPENTHREAD_EXAMPLES_EFR32
 libmbedcrypto_a_SOURCES                      += \
